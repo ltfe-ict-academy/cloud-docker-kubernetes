@@ -48,12 +48,22 @@
 ## Full Course Outline
 
 ### [Part 1: Intro To Docker](./Part_01_Intro_To_Docker/README.md)
+- Containers History
+- Introduction to Containers
 - Docker overview
-- Why are containers and Docker so important?
 - Installing Docker
 - Running Hello World in a container
 - Example: Running multiple NGINX instances
 - Docker Architecture
 - The Docker Engine (Advanced)
+
+## [Part 2: Containers](./Part_02_Containers/README.md)
+- Containers vs Virtual Machines
+- What is a container?
+- Starting a simple container
+- Container processes
+- Web server example
+- Exploring the container filesystem and the container lifecycle
+- Stopping containers gracefully
 
 ## Changes

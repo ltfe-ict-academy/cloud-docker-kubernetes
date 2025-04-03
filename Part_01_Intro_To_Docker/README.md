@@ -40,7 +40,7 @@ Container technology has existed for a long time in different forms, but it has 
 - 2008: LXC (Linux)
 - 2013: Docker (Linux, FreeBSD, Windows)
 
-## Containerization vs traditional virtualization
+### Containerization vs traditional virtualization
 Virtualization was developed as an effort to **fully utilize available computing resources**. Virtualization enables multiple virtual machines to run on a single host for different purposes with their own isolated space. 
 
 Virtualization achieved such isolated operating system environments using hypervisors, computer software that sits in between the host operating system and the guest or the virtual machine’s operating system.
@@ -63,14 +63,14 @@ Some of the possibilities with containers are as follows:
 - Help to maximize resource utilization in data centers
 - Aid different development, test, and production deployment workflows
 
-## Container Definition
+### Container Definition
 A **container can be defined as a single operating system image, bundling a set of isolated applications and their dependent resources so that they run separated from the host machine.** There may be multiple such containers running within the same host machine.
 
 Containers can be classified into two types:
 - **Operating system level**: An entire operating system runs in an isolated space within the host machine, sharing the same kernel as the host machine.
 - **Application level**: An application or service, and the minimal processes required by that application, runs in an isolated space within the host machine.
 
-## What types of containers are there?
+### What types of containers are there?
 - **System containers** (as run by LXD) are similar to virtual or physical machines. They **run a full operating system inside them**, you can run any type of workload, and you manage them exactly as you would a virtual or a physical machine. System containers are usually **long-lasting** and you could host **several applications** within a single system container. That means you can install packages inside them, you can manage services, define backup policies, monitoring, and all other aspects as you usually would with a virtual machine.
 - **Application containers** (such as Docker), also known as process containers, are containers that **package and run a single process or a service** per container. They run **stateless types of workloads** that are meant to be ephemeral. This means that these containers are temporary, and you can create, delete and replace containers easily as needed. Usually, you don’t need to care about the lifecycle of those containers.
 
@@ -93,7 +93,7 @@ Both application and system containers share a kernel with the host operating sy
 - Docker is becoming a core competency
 for operators and developers across the industry—in the 2019 Stack Overflow survey, Docker polled as **people’s number one “most wanted” technology**.
 
-## Why are containers and Docker so important?
+### Why are containers and Docker so important?
 - **Migrating apps to the cloud**
     - Moving apps to the cloud is top of mind for many organizations. -> Less cost, easier scaling, faster deployment of new applications, no worries about hardware.
     - You migrate each part of your application to a container, and then you can run the whole application in containers using Kubernetes or other cloud services, or on your own Docker cluster in the datacenter.
