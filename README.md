@@ -75,7 +75,7 @@
 - Images and layers
 - Deleting Images
 
-## [Part 4: Docker Storage And Volumes](./Part_04_Docker_Storage_And_Volumes/README.md)
+### [Part 4: Docker Storage And Volumes](./Part_04_Docker_Storage_And_Volumes/README.md)
 - Introduction to Docker Storage And Volumes
 - Containers and non-persistent data
 - Running containers with Docker volumes
@@ -91,5 +91,18 @@
 - Use tmpfs mounts (Advanced)
 - Choose the right type of mount
 - Example: Run a PostgreSQL database
+
+### [Part 5: Docker Networking](./Part_05_Docker_Networking/README.md)
+- Docker networking overview
+- Docker network architecture (Advanced)
+- Network drivers
+- Bridge networks
+- Host network
+- Overlay networks
+- Connecting to existing networks (Advanced)
+- Disable networking for a container
+- Port Mapping
+- Service discovery (Advanced)
+- Docker and iptables (Advanced)
 
 ## Changes
