@@ -57,7 +57,7 @@
 - Docker Architecture
 - The Docker Engine (Advanced)
 
-## [Part 2: Containers](./Part_02_Containers/README.md)
+### [Part 2: Containers](./Part_02_Containers/README.md)
 - Containers vs Virtual Machines
 - What is a container?
 - Starting a simple container
@@ -66,7 +66,7 @@
 - Exploring the container filesystem and the container lifecycle
 - Stopping containers gracefully
 
-## [Part 3: Docker Images](./Part_03_Docker_Images/README.md)
+### [Part 3: Docker Images](./Part_03_Docker_Images/README.md)
 - About Docker Images
 - Pulling images
 - Image registries
