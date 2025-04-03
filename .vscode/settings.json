@@ -27,7 +27,8 @@
         "mpls",
         "Ndarrays",
         "Pylance",
-        "skiprows"
+        "skiprows",
+        "tmpfs"
     ],
     // Notebook-specific settings:
     "notebook.formatOnSave.enabled": true,
