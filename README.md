@@ -66,4 +66,13 @@
 - Exploring the container filesystem and the container lifecycle
 - Stopping containers gracefully
 
+## [Part 3: Docker Images](./Part_03_Docker_Images/README.md)
+- About Docker Images
+- Pulling images
+- Image registries
+- Image naming and tagging
+- Filtering the images on the host
+- Images and layers
+- Deleting Images
+
 ## Changes
