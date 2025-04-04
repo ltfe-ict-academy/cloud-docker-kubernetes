@@ -105,4 +105,96 @@
 - Service discovery (Advanced)
 - Docker and iptables (Advanced)
 
+### [Part 6: Building Images](./Part_06_Building_Images/README.md)
+- Overview of Docker Build
+- Containerizing an app - overview
+- Building your first container image
+- Understanding Docker images and image layers
+- Understanding the image layer cache
+- Understand how CMD and ENTRYPOINT interact
+- Difference between the COPY and ADD commands
+- Using the VOLUME command inside a Dockerfile
+- Run containers as non-root user
+- Best practices for writing Dockerfiles
+- Example: Build a Python application
+- Use multi-stage builds
+- Build secrets
+- More best practices for writing Dockerfiles (Advanced) 
+- Building Docker images from a container (Advanced)
+- Building and Testing Multi-Arch Images (Advanced)
+- Building Wasm Images (Advanced)
+- Generate the SBOM for Docker images (Advanced)
+
+### [Part 7: Sharing Docker Images](./Part_07_Sharing_Docker_Images/README.md)
+- Working with registries, repositories, and image tags
+- Create a repo on Docker Hub
+- Pushing your own images to Docker Hub
+- Run the image on a new instance
+- Introducing self-hosted registries
+- Running and using your own Docker registry
+- Using image tags effectively
+- Configure the credentials store (Advanced)
+
+### [Part 8: Running Multi-container Apps With Docker Compose](./Part_08_Running_Multi_container_Apps_With_Docker_Compose/README.md)
+- Overview of Docker Compose and installation
+- Compose background
+- Running a application with Compose: icta_app_minimal
+- Development with Compose: icta_app_development
+- Production deployment with Compose: icta_app_production
+- Scaling and Load Balancing using Compose
+- Advanced Compose features (Advanced)
+- Example: Run ownCloud in Docker Compose
+
+### [Part 9: Docker Reliability And Health Checks](./Part_09_Docker_Reliability_And_Health_Checks/README.md)
+- Self-healing containers with restart policies
+- Using restart policies in Docker Compose
+- Understanding PID 1 in Docker containers
+- Docker Resource Management (Advanced)
+- Building health checks into Docker images
+- Defining health checks and dependency checks in Docker Compose
+
+### [Part 10: Managing Application Logs](./Part_10_Managing_Application_Logs/README.md)
+- Docker logging overview
+- Configure logging drivers
+
+### [Part 11: Monitoring And Management](./Part_11_Monitoring_And_Management/README.md)
+- Installing Portainer CE
+
+### [Part 12: Docker Configuration Management](./Part_12_Docker_Configuration_Management/README.md)
+- Secrets configuration in Docker Compose
+
+### [Part 13: Docker Security](./Part_13_Docker_Security/README.md)
+- Docker security overview
+- Container security
+- Container scanning
+
+### [Part 14: Advanced Docker](./Part_14_Advanced_Docker/README.md)
+- Run the Docker daemon as a non-root user - Rootless mode (Advanced)
+- Podman
+
+### [Part 15: Container orchestration and microservices](./Part_15_Container_orchestration_and_microservices/README.md)
+- Traditional applications
+- Microservices
+- Moving from monolithic apps to microservices
+- 12 Factor Apps
+- Container Orchestration
+- Kubernetes vs Docker Swarm
+
+### [Part 16: Introduction to Kubernetes](./Part_16_Introduction_to_Kubernetes/README.md)
+- About Kubernetes
+- Kubernetes history
+- Understanding Kubernetes
+- The benefits of using Kubernetes
+- Kubernetes architecture
+- Kubernetes versions
+- Install Kubernetes
+- Should you even use Kubernetes?
+- How Kubernetes runs an application
+- Deploying your first application
+
+
 ## Changes
+
+
+## Sources
+- [Play with Docker Classroom](https://training.play-with-docker.com/)

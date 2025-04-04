@@ -1,0 +1,60 @@
+# syntax=docker/dockerfile:1
+
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.12.7-bookworm AS builder
+
+# set working directory
+WORKDIR /usr/src/app
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+# The installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
+
+# Download the latest installer
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+# Run the installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
+
+
+# install python dependencies
+COPY ./requirements.txt .
+RUN uv venv /opt/venv && \
+    uv pip install --no-cache -r requirements.txt
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python:3.12.7-slim-bookworm
+
+# set working directory
+WORKDIR /usr/src/app
+
+# update image
+RUN apt-get --allow-releaseinfo-change update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# copy project
+COPY . /usr/src/app
+
+EXPOSE 8000
+
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["--workers", "1"]

@@ -1,0 +1,61 @@
+# syntax=docker/dockerfile:1
+
+ARG version=3.10.6
+
+###########
+# BUILDER #
+###########
+FROM python:${version}-buster AS builder
+
+# install dependencies
+RUN apt-get update && apt-get install -y \
+    --no-install-recommends netcat \
+    python-pip \
+    python-dev \
+    build-essential
+
+RUN pip install --upgrade pip
+COPY ./requirements.txt requirements.txt
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+#########
+# FINAL #
+#########
+FROM python:${version}-slim-buster
+
+LABEL maintainer="leon@ltfe.org"
+
+# set environment variables
+ENV APPROOT="/home/app/web" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    VERSION="0.1" 
+
+LABEL base.name="Smart API" \
+      base.version="${VERSION}"
+
+# create the app user
+RUN groupadd -r -g 2200 app && \
+    useradd -rM -g app -u 2200 app
+
+# set work directory
+WORKDIR $APPROOT
+
+EXPOSE 5000
+
+# install dependencies
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+# copy project
+COPY . $APPROOT
+
+# chown all the files to the app user
+RUN chown -R app:app $APPROOT
+
+# change to the app user
+USER app
+
+ENTRYPOINT ["python", "main.py"]

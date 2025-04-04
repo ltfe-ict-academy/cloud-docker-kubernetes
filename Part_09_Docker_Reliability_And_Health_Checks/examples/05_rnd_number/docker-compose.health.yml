@@ -1,0 +1,29 @@
+name: icta-app
+
+services:
+  icta-app-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.health
+    tty: true
+    ports:
+      - "80:8000"
+    networks:
+      - icta-app-net
+    environment:
+      REDIS_HOST: icta-app-redis
+      REDIS_PORT: 6379
+      SIMULATE_ERROR: "true"
+  icta-app-redis:
+    image: "redis:7.2.4-alpine"
+    command: redis-server --save 20 1 --loglevel warning
+    networks:
+      - icta-app-net
+    volumes:
+      - "icta-app-redis-data:/data"
+
+networks:
+  icta-app-net:
+
+volumes:
+  icta-app-redis-data:

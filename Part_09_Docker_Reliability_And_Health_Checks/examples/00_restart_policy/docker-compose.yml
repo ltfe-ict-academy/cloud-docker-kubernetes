@@ -1,0 +1,8 @@
+services:
+  processing-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MAX_COUNTER: 10
+    restart: always

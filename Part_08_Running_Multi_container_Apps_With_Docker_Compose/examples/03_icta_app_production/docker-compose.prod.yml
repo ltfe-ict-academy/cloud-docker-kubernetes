@@ -1,0 +1,38 @@
+name: icta-app
+
+services:
+  icta-app-nginx:
+    image: nginx:1.25.4-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - icta-app-api
+    networks:
+      - icta-app-net-frontend
+    ports:
+      - 80:8080
+  icta-app-api:
+    image: leon11sj/icta-app:v1.0
+    tty: true
+    networks:
+      - icta-app-net-backend
+      - icta-app-net-frontend
+    environment:
+      REDIS_HOST: icta-app-redis
+      REDIS_PORT: 6379
+    depends_on:
+      - icta-app-redis
+  icta-app-redis:
+    image: "redis:7.2.4-alpine"
+    command: redis-server --save 20 1 --loglevel warning
+    networks:
+      - icta-app-net-backend
+    volumes:
+      - "icta-app-redis-data:/data"
+
+networks:
+  icta-app-net-backend:
+  icta-app-net-frontend:
+
+volumes:
+  icta-app-redis-data:
