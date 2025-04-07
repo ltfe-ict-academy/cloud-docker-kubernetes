@@ -193,8 +193,9 @@
 - Deploying your first application
 
 
-## Changes
+## Changelog
 
+The changelog is available [here](./CHANGELOG.md).
 
 ## Sources
 - [Play with Docker Classroom](https://training.play-with-docker.com/)
