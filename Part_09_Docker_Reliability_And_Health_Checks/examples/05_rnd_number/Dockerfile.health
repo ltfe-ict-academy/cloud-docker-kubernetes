@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # pull official base image
-FROM python:3.11.9-slim-bookworm
+FROM python:3.12.7-bookworm
 
 # set work directory
 WORKDIR /usr/src/app
@@ -10,16 +10,15 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install system dependencies for easier debugging
-RUN apt update && apt install -y curl
+# The installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates
 
-# install uv package manager
-ADD https://astral.sh/uv/install.sh /install.sh
-RUN chmod -R 655 /install.sh && /install.sh && rm /install.sh
-
-# install python dependencies
-COPY ./requirements.txt /usr/src/app/requirements.txt
-RUN /root/.cargo/bin/uv pip install --system --no-cache -r /usr/src/app/requirements.txt
+# Download the latest installer
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+# Run the installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
 
 # copy project
 COPY . /usr/src/app
