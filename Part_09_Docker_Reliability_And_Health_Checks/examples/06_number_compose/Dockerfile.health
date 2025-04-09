@@ -20,6 +20,10 @@ RUN sh /uv-installer.sh && rm /uv-installer.sh
 # Ensure the installed binary is on the `PATH`
 ENV PATH="/root/.local/bin/:$PATH"
 
+# install python dependencies
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN uv pip install --system --no-cache -r /usr/src/app/requirements.txt
+
 # copy project
 COPY . /usr/src/app
 
